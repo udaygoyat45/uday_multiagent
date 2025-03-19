@@ -1,0 +1,23 @@
+.final-result-container {
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+    width: 100%;
+  }
+  
+  .final-result-box {
+    background-color: white;
+    color: #1a1a1a;
+    border: 1.5px solid #000;
+    border-radius: 12px;
+    padding: 24px;
+    max-width: 800px; /* Wider */
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px; /* Bigger font */
+    line-height: 1.8; /* Slightly more spacing */
+  
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }

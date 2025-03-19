@@ -1,0 +1,39 @@
+.status-container {
+    /* margin-top: 16px;
+    width: 100%;
+    max-width: 600px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: Arial, sans-serif; */
+
+    /* margin-bottom: 50px; */
+    flex: 1;
+    overflow: auto; /* optional: scroll if content overflows */
+    padding: 10px;
+}
+
+.status-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.status-message {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+
+.status-error {
+    font-size: 14px;
+    font-weight: bold;
+    color: red;
+}

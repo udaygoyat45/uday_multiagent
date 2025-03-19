@@ -21,7 +21,7 @@ export class PromptGenerator {
     constructor() {
         const process_api_key = process.env.OPENAI_API_KEY;
         if (!process_api_key)
-            throw new Error(`Missing COHERE_API_KEY`);
+            throw new Error(`Missing OPENAI_API_KEY`);
         this.api_key = process_api_key;
         this.openai = new OpenAI({
             apiKey: this.api_key,

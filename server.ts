@@ -24,7 +24,8 @@ app.post('/submit-prompt', (req: Request, res: Response) => {
             return res.status(400).json({error: "Missing prompt output string"});
         }
         let orchestrator = new TaskOrchestrator();
-        orchestrator.parsePromptToGraph(prompt.content);
+        console.log("Given prompt", prompt.content);
+        orchestrator.parsePromptToGraph(prompt);
         ChatConfig.idx++;
         ChatConfig.chats.set(ChatConfig.idx, orchestrator);
         res.json({ idx: ChatConfig.idx });

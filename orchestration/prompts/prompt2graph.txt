@@ -48,6 +48,10 @@ Provide your response as a JSON object with the following structure:
 
 ## Important Considerations
 
+### For Tasks
+- Create tasks as low level as possible.
+- If data needs to be gathered for multiple entities, create a task for each
+
 ### For Task Dependencies
 - Analyze which tasks truly depend on others
 - Maximize opportunities for parallel execution
@@ -56,40 +60,30 @@ Provide your response as a JSON object with the following structure:
 ### For Browser Sessions
 - Determine when a fresh browser session is needed
 - Track which tasks should continue an existing session
-- Handle session branching when multiple tasks depend on the same session
-- Consider whether tasks require authenticated sessions
 
 ### For Data Flow
 - Identify what data each task requires from previous tasks
 - Specify what data each task produces for downstream tasks
-- Define priority data that takes precedence when resolving conflicts
 - Use clear, consistent naming conventions for data keys
 
-### For Automation
-- Include specific URLs, selectors, and actions
-- Provide fallback strategies when possible (alternative selectors)
-- Consider timing and wait conditions 
-- Be specific about data extraction methods
+## Mandatory Requirements
+1. **Entity Separation:** ALWAYS create separate tasks for EACH entity (restaurant/product/website) even if they use identical steps
+2. **Atomic Tasks:** Each task must handle ONLY ONE entity/action
+3. **Parallelization:** Maximize parallel execution by isolating entity-specific tasks
+4. **Explicit Outputs:** Each entity task must produce UNIQUE output keys (e.g., "<entity>-rating")
+5. Only Google search engine may be used. No other services like Yelp, Best Buy should be used. 
 
-## Example Prompts and Expected Analysis
+## Output Format
+Use JSON with:
+- Separate task for each entity search/scrape
+- Unique data keys per entity
+- Parallelizable structure for entity tasks
 
-### Example 1: E-commerce Research
-"Research prices for Sony headphones across Amazon, Best Buy, and Target. Create a spreadsheet comparing features and prices."
-
-This would require:
-- Parallel tasks for each website
-- New browser sessions for each site
-- Data collection and aggregation tasks
-- Final spreadsheet creation task
-
-### Example 2: Email Campaign
-"Login to my Gmail, find all unread emails from the last 3 days, categorize them by sender, and send a summary to my team."
-
-This would require:
-- Sequential authentication
-- Single browser session maintained throughout
-- Data processing tasks that don't require browser interaction
-- Final email composition and sending task
+## Critical Instructions
+- NEVER combine multiple entities into single tasks
+- Treat identical operations on different entities as SEPARATE tasks
+- Use entity-specific identifiers in all data keys
+- Create comparison/analysis tasks ONLY after all entity data is collected
 
 ## Your Process
 
@@ -101,7 +95,7 @@ This would require:
 6. Add detailed automation instructions
 7. Analyze execution flow
 
-Be comprehensive yet precise. Each task should be detailed enough that an automation system could execute it without further clarification. All web sessions wil start at google.com, and it is expected that all the prompts will be answered using Google and its services.
+Be comprehensive yet precise. Each task should be detailed enough that an automation system could execute it without further clarification. 
 
 ### Prompt
 Equipped with this context, here is prompt to generate the data for:

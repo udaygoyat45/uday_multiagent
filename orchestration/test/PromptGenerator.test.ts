@@ -23,7 +23,7 @@ describe('PromptGenerator', () => {
   beforeEach(() => {
     // Reset process.env before each test
     process.env = { ...originalEnv };
-    process.env.COHERE_API_KEY = 'mock-api-key';
+    process.env.OPENAI_API_KEY = 'mock-api-key';
     
     // Reset all mocks
     jest.clearAllMocks();
@@ -46,8 +46,8 @@ describe('PromptGenerator', () => {
     });
 
     it('should throw error when API key is missing', () => {
-      delete process.env.COHERE_API_KEY;
-      expect(() => new PromptGenerator()).toThrow('Missing COHERE_API_KEY');
+      delete process.env.OPENAI_API_KEY;
+      expect(() => new PromptGenerator()).toThrow('Missing OPENAI_API_KEY');
     });
   });
 
